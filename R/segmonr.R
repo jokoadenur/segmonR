@@ -37,15 +37,15 @@ segmonr <- function(data, color = NULL) {
   }
 
   # Transform data to calculate proportions and angles
-  data <- data %>%
-    dplyr::mutate(
-      proportion = value / sum(value),
-      percentage = round(proportion * 100, 1),
-      start = 90 - cumsum(proportion) * 360,
-      end = start + proportion * 360,
-      inner_radius = seq(1, n(), by = 1),
-      outer_radius = inner_radius + 1
-    )
+  data <- dplyr::mutate(
+    data,
+    proportion = value / sum(value),
+    percentage = round(proportion * 100, 1),
+    start = 90 - cumsum(proportion) * 360,
+    end = start + proportion * 360,
+    inner_radius = seq(1, nrow(data), by = 1),
+    outer_radius = inner_radius + 1
+  )
 
   # Function to create arc coordinates
   createarc <- function(start, end, inner_radius, outer_radius, n = 100) {
@@ -67,18 +67,18 @@ segmonr <- function(data, color = NULL) {
 
   # Create the plot
   ggplot2::ggplot() +
-    geom_polygon(data = arcdata, aes(x = x, y = y, group = text, fill = I(color)),
-                 color = "white", size = 1) +
-    geom_text(data = data,
-              aes(x = (inner_radius + outer_radius) / 2 * cos((start + end) / 2 * pi / 180),
-                  y = (inner_radius + outer_radius) / 2 * sin((start + end) / 2 * pi / 180),
-                  label = text),
-              size = 3, fontface = "bold", hjust = 0.5) +
-    geom_text(data = data,
-              aes(x = (inner_radius + outer_radius) / 2 * cos(end * pi / 180),
-                  y = (inner_radius + outer_radius) / 2 * sin(end * pi / 180),
-                  label = paste0(percentage, "%")),
-              size = 3, fontface = "italic", color = "black") +
-    coord_fixed(clip = "off") +
-    theme_void()
+    ggplot2::geom_polygon(data = arcdata, ggplot2::aes(x = x, y = y, group = text, fill = I(color)),
+                          color = "white", size = 1) +
+    ggplot2::geom_text(data = data,
+                       ggplot2::aes(x = (inner_radius + outer_radius) / 2 * cos((start + end) / 2 * pi / 180),
+                                    y = (inner_radius + outer_radius) / 2 * sin((start + end) / 2 * pi / 180),
+                                    label = text),
+                       size = 3, fontface = "bold", hjust = 0.5) +
+    ggplot2::geom_text(data = data,
+                       ggplot2::aes(x = (inner_radius + outer_radius) / 2 * cos(end * pi / 180),
+                                    y = (inner_radius + outer_radius) / 2 * sin(end * pi / 180),
+                                    label = paste0(percentage, "%")),
+                       size = 3, fontface = "italic", color = "black") +
+    ggplot2::coord_fixed(clip = "off") +
+    ggplot2::theme_void()
 }
