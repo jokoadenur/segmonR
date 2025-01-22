@@ -2,6 +2,7 @@
 #' @import ggplot2
 #' @import dplyr
 #' @import scales
+#' @importFrom dplyr %>%
 
 #' Create a segmented motion pie chart
 #'
@@ -57,10 +58,10 @@ segmonr <- function(data, color = NULL) {
   }
 
   # Generate arc data
-  arcdata <- bind_rows(
+  arcdata <- dplyr::bind_rows(
     lapply(1:nrow(data), function(i) {
       createarc(data$start[i], data$end[i], data$inner_radius[i], data$outer_radius[i]) %>%
-        mutate(text = data$text[i], color = color[i])
+        dplyr::mutate(text = data$text[i], color = color[i])
     })
   )
 
