@@ -2,7 +2,7 @@
 #' @import ggplot2
 #' @import dplyr
 #' @import scales
-#' @importFrom dplyr %>%
+#' @importFrom dplyr row_number
 
 #' Create a segmented motion pie chart
 #'
@@ -47,7 +47,7 @@ segmonr <- function(data, color = NULL) {
       percentage = round(proportion * 100, 1),
       start = 90,
       end = 90 - cumsum(proportion) * 360 + 15,
-      inner_radius = row_number(),  # Lebih ringkas menggunakan row_number()
+      inner_radius = dplyr::row_number(),  # Lebih ringkas menggunakan row_number()
       outer_radius = inner_radius + 1
     )
 
