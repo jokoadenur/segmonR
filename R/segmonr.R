@@ -72,15 +72,15 @@ segmonr <- function(data, color = NULL) {
 
   # Build the plot
   ggplot2::ggplot() +
-    ggplot2::geom_polygon(data = arcdata, aes(x = x, y = y, group = text, fill = I(color)),
+    ggplot2::geom_polygon(data = arcdata, ggplot2::aes(x = x, y = y, group = text, fill = I(color)),
                           color = "white", linewidth = 1) +  # Updated from `size` to `linewidth`
     ggplot2::geom_text(data = data,
-                       aes(x = (inner_radius + outer_radius) / 2 * cos(start * pi / 180),
+                       ggplot2::aes(x = (inner_radius + outer_radius) / 2 * cos(start * pi / 180),
                            y = (inner_radius + outer_radius) / 2 * sin(start * pi / 180),
                            label = text),
                        size = 3, hjust = 1.2, fontface = "bold") +
     ggplot2::geom_text(data = data,
-                       aes(x = (inner_radius + outer_radius) / 2 * cos(end * pi / 180),
+                       ggplot2::aes(x = (inner_radius + outer_radius) / 2 * cos(end * pi / 180),
                            y = (inner_radius + outer_radius) / 2 * sin(end * pi / 180),
                            label = paste0(percentage, "%")),
                        size = 3, hjust = 0.5, fontface = "italic", color = "black") +
