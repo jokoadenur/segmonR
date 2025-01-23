@@ -32,20 +32,22 @@ segmonr(data)
 
 1. Simple data with additional columns:
    ```R
-  data <- data.frame(
-  text = c("A", "B", "C", "D", "E", "F"),
-  value = c(20, 45, 60, 75, 120, 67),
-  group = c("G1", "G1", "G2", "G2", "G3", "G8"),
-  category = c("Cat1", "Cat2", "Cat3", "Cat4", "Cat5", "Cat6"))
-  segmonr(data)
+   data <- data.frame(
+   text = c("A", "B", "C", "D", "E", "F"),
+   value = c(20, 45, 60, 75, 120, 67),
+   group = c("G1", "G1", "G2", "G2", "G3", "G8"),
+   category = c("Cat1", "Cat2", "Cat3", "Cat4", "Cat5", "Cat6"))
+
+   segmonr(data)
    ```
 2. Data with customized colors:
    ```R
-  data <- data.frame(
-  text = c("A", "B", "C", "D", "E"),
-  value = c(20, 45, 60, 75, 120),
-  color = c("#ff1493", "#ff6361", "#bc5090", "#50508d", "#60508d"))
-  segmonr(data)
+   data <- data.frame(
+   text = c("A", "B", "C", "D", "E"),
+   value = c(20, 45, 60, 75, 120),
+   color = c("#ff1493", "#ff6361", "#bc5090", "#50508d", "#60508d"))
+
+   segmonr(data)
    ```
 3. Customize colors manually:
    ```R
