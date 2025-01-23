@@ -19,6 +19,11 @@
 #'   color = c("#FF0000", "#00FF00", "#0000FF", "#FFFF00")
 #' )
 #' segmonr(data)
+
+utils::globalVariables(c("%>%", "value", "proportion", "start",
+                         "inner_radius", "x", "y", "text", "outer_radius",
+                         "end", "percentage"))
+
 segmonr <- function(data, color = NULL) {
   # Ensure required columns exist in the data
   required_columns <- c("text", "value")
