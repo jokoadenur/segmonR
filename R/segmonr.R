@@ -20,7 +20,7 @@
 #' )
 #' segmonr(data)
 
-utils::globalVariables(c("%>%", "value", "proportion", "start",
+utils::globalVariables(c("|>", "value", "proportion", "start",
                          "inner_radius", "x", "y", "text", "outer_radius",
                          "end", "percentage"))
 
@@ -41,14 +41,13 @@ segmonr <- function(data, color = NULL) {
     }
   }
 
-  # Transform data
   data <- data |>
     dplyr::mutate(
       proportion = value / sum(value),
       percentage = round(proportion * 100, 1),
       start = 90,
       end = 90 - cumsum(proportion) * 360 + 15,
-      inner_radius = seq(1, n(), by = 1),
+      inner_radius = row_number(),  # Lebih ringkas menggunakan row_number()
       outer_radius = inner_radius + 1
     )
 
