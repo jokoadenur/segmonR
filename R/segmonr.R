@@ -22,7 +22,7 @@
 
 utils::globalVariables(c("%>%", "value", "proportion", "start",
                          "inner_radius", "x", "y", "text", "outer_radius",
-                         "end", "percentage", "n", "aes"))
+                         "end", "percentage"))
 
 segmonr <- function(data, color = NULL) {
   # Ensure the required columns are in the data
