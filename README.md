@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/195ab93a-1231-4e90-99db-cf70f97ff225)
+
 # segmonR
 
 `segmonR` is an R package designed for visualizing data in the form of pie charts with customizable segment motion. It allows you to create dynamic, circular visualizations, and provides options to customize the segments based on variables or categories in your data.
