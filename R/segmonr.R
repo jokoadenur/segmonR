@@ -3,6 +3,7 @@
 #' @import dplyr
 #' @import scales
 #' @importFrom dplyr row_number
+#' @importFrom ggplot2 aes
 
 #' Create a segmented motion pie chart
 #'
