@@ -57,6 +57,7 @@ segmonr(data)
   To use the segmonr() function effectively, your data must contain at least two columns:
   
   text: The category or label for each segment
+  
   value: The value or proportion for each segment
   
   Optional additional columns such as color, group, or category can be used to further customize the visualization.
