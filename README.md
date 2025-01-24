@@ -1,3 +1,8 @@
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![CRAN Version](https://img.shields.io/badge/CRAN-7.3.2-brightgreen)
+![Open Issues](https://img.shields.io/badge/open%20issues-0-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
 ![image](https://github.com/user-attachments/assets/195ab93a-1231-4e90-99db-cf70f97ff225)
 
 # segmonR
