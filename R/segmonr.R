@@ -50,7 +50,7 @@ segmonr <- function(data, color = NULL) {
       percentage = round(proportion * 100, 1),
       start = 90,
       end = 90 - proportion * 360 - 130,
-      inner_radius = dplyr::row_number(),  # Lebih ringkas menggunakan row_number()
+      inner_radius = dplyr::row_number(),
       outer_radius = inner_radius + 1
     )
 
