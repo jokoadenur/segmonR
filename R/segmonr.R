@@ -42,12 +42,14 @@ segmonr <- function(data, color = NULL) {
     }
   }
 
+  # Sort the data by value in descending order
   data <- data |>
+    dplyr::arrange(-desc(value)) |>
     dplyr::mutate(
       proportion = value / sum(value),
       percentage = round(proportion * 100, 1),
       start = 90,
-      end = 90 - cumsum(proportion) * 360 + 15,
+      end = 90 - proportion * 360 - 130,
       inner_radius = dplyr::row_number(),  # Lebih ringkas menggunakan row_number()
       outer_radius = inner_radius + 1
     )
@@ -76,13 +78,13 @@ segmonr <- function(data, color = NULL) {
                           color = "white", linewidth = 1) +  # Updated from `size` to `linewidth`
     ggplot2::geom_text(data = data,
                        ggplot2::aes(x = (inner_radius + outer_radius) / 2 * cos(start * pi / 180),
-                           y = (inner_radius + outer_radius) / 2 * sin(start * pi / 180),
-                           label = text),
+                                    y = (inner_radius + outer_radius) / 2 * sin(start * pi / 180),
+                                    label = text),
                        size = 3, hjust = 1.2, fontface = "bold") +
     ggplot2::geom_text(data = data,
                        ggplot2::aes(x = (inner_radius + outer_radius) / 2 * cos(end * pi / 180),
-                           y = (inner_radius + outer_radius) / 2 * sin(end * pi / 180),
-                           label = paste0(percentage, "%")),
+                                    y = (inner_radius + outer_radius) / 2 * sin(end * pi / 180),
+                                    label = paste0(percentage, "%")),
                        size = 3, hjust = 0.5, fontface = "italic", color = "black") +
     ggplot2::coord_fixed(clip = "off") +
     ggplot2::theme_void()
