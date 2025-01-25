@@ -2,7 +2,7 @@
 #' @import ggplot2
 #' @import dplyr
 #' @import scales
-#' @importFrom dplyr row_number
+#' @importFrom dplyr row_number desc
 #' @importFrom ggplot2 aes
 
 #' Create a segmented motion pie chart
@@ -44,7 +44,7 @@ segmonr <- function(data, color = NULL) {
 
   # Sort the data by value in descending order
   data <- data |>
-    dplyr::arrange(-desc(value)) |>
+    dplyr::arrange(-dplyr::desc(value)) |>
     dplyr::mutate(
       proportion = value / sum(value),
       percentage = round(proportion * 100, 1),
