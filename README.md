@@ -47,6 +47,8 @@ segmonr(data)
 
    segmonr(data)
    ```
+   <img width="1117" height="957" alt="image" src="https://github.com/user-attachments/assets/2fc28a58-67ad-4f70-9bec-3da1d4821f42" />
+
 2. Data with customized colors:
    ```R
    data <- data.frame(
@@ -56,6 +58,8 @@ segmonr(data)
 
    segmonr(data)
    ```
+   <img width="1046" height="957" alt="image" src="https://github.com/user-attachments/assets/d4be8053-f20e-4724-b5bd-75ff1a79f9cd" />
+
 3. Customize colors manually:
    ```R
    segmonr(data, color = c("#ff6347", "#32cd32", "#ff4500", "#6a5acd", "#d2691e"))
